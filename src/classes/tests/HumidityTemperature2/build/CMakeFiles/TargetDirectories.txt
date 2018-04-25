@@ -1,0 +1,1 @@
+/home/pi/work/src/classes/tests/HumidityTemperature2/build/CMakeFiles/HumidityTemperatureTests.dir

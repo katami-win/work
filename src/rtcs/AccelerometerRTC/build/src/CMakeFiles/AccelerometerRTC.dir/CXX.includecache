@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/work/src/classes/Accelerometer.cpp
+iostream
+-
+iomanip
+-
+sstream
+-
+unistd.h
+-
+sys/ioctl.h
+-
+linux/i2c-dev.h
+-
+fcntl.h
+-
+Accelerometer.h
+/home/pi/work/src/classes/Accelerometer.h
+
+/home/pi/work/src/classes/Accelerometer.h
+string
+-
+

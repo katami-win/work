@@ -1,0 +1,4 @@
+/home/pi/work/src/rtcs/BarometerRTC/build/src/CMakeFiles/ALL_IDL_TGT.dir
+/home/pi/work/src/rtcs/BarometerRTC/build/src/CMakeFiles/BarometerRTC.dir
+/home/pi/work/src/rtcs/BarometerRTC/build/src/CMakeFiles/BarometerRTCComp.dir
+/home/pi/work/src/rtcs/BarometerRTC/build/CMakeFiles/uninstall.dir

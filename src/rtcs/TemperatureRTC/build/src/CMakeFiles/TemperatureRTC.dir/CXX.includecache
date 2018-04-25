@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/TemperatureRTC/OneWire.h
+string
+-
+vector
+-
+
+/home/pi/work/src/classes/OneWire.cpp
+string
+-
+vector
+-
+fstream
+-
+iostream
+-
+sstream
+-
+dirent.h
+-
+OneWire.h
+-
+

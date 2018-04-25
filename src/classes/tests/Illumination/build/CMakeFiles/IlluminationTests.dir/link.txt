@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/IlluminationTests.dir/IlluminationTests.cpp.o CMakeFiles/IlluminationTests.dir/home/pi/work/src/classes/Illumination.cpp.o CMakeFiles/IlluminationTests.dir/home/pi/work/src/classes/Task.cpp.o  -o IlluminationTests -rdynamic -lpthread 

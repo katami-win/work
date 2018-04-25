@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "canvas-replica-151715",
+  "private_key_id": "3df2d71098259bb52e7f416f011b54af57c6050e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDUfwYtXHECtSF6\nMZKxQqr9uHduHJQtYlXas0H2vRPxIbO4Cg7a7Azfiiy5wNnTWw1A9zXddykUAqVj\nYK1ykYGFXRMuuIXBHxqJ0D0U3/i3gWCRhBUSIfRvMINPUE+c6c7/4t4j4CGxetYX\nyKHeIwKuvRUpzhjk1EAMnrufg9XBI8vd3MXm+0cj12u8F9GuY6lGbUigSolVopXv\n+PCLPrE2X+Gtd1mqj5lJ4hBjNlI0Jkqp3321QAmfOgEhp52YOQ07iSSqipMpX7LS\nRk6zeTXs30BaTDuxHGiOpdDkNyvK6sJCRXR4Y0K1AnA64td2FfvKsZML9JWAhaVj\n7eOqirErAgMBAAECggEAdecg+0w+XB06PP2Cgh4Wl/6hLZRn1yKntlgd8pSImxNz\nD1ttUKUGo4WcOVi6w93SZciEt6PlQ/gP4isDMf1wGxpAiXzSogvrAqprKcj3zIHZ\nngPmWRBD+um1Ae3yroLAWxR64vb6WupoHfwxa/qLA39gXbi/8T+fZiEww1o34RhD\nsmW8iiLeBH0K5lYTe/zFHM6ABJQ/2XXJ+MaNhoNSma6FzLHyFc9UpEfo+KuQ8pPB\nSuYw8zbeMYMkyxXnT5JmDIxPwcihaBjzcf54SBImZul1JHg2SqeYxSjuxnKPTS8E\nU81ImAk1Ul/UVsN7d6THslgONN9bJWbFzNiBzctlwQKBgQDqlVX7sVeZA64A4oZX\nvNKhhyghxpsmQ3mbkI5DNM4qMGLmcDMSZgyVeAHKuUfKWzYiXTz48ekSXgQ72qki\n2C0B2xiJH1oXTIdIWLyyzIJb061P4dpO1hJ1ioccXcLBhoChcgPUjk8iLLCieWHs\n9YwYyLov2fCXz4DxdgZAV4woIQKBgQDn5XgMXdCCtrbiy/zwI8n6JD4HRI1jIRoM\nx1bdM/cT1TafXwhujaCoXxGivLfTFY5AWAPrdiVi7Hc4cfDh2XT3UA/fyG+MRKDb\nxZezjZ8/lNPiBlCpjZAm8+ppXoVTxp6RA2Jr+/KmFimyu1EKo65hXrb1ncnzuz2/\nX0iq3K7/ywKBgQDPoWRchahqGBawU8/i4o9wRyffVWHH6Vs+tSEmHRwJvZAcNN0P\ngOHMfk7ft0Tyt+7fVbV9Bulrx2lp7O1dmQelJ968p9Je4u6uu1Qx0c/kJSS2mspW\nkyX9gaJ7GgYissExpK/9OASU1Ad3l4Z0bRYWbbxWVEmepRyVHAkGdDbq4QKBgQCB\nFaIiuCI2cQES9FwjTLjEzmHc59MQaD+490mqLqAN4TTbuCnYaGwS7YDCpuxoyun5\ndUURUB31mA2xVPOytLrAZEfB2TAG07j7PV15rI8F9JGRktRZ3Zxton9NEjmDbd+c\nd1bVJ1VmEJY7kLvHAWAzgWa1CJV/YC46Fg88VUXwywKBgELV5nj9AFOBVVGKm2YV\n6VYfVSFrELgWxarKrjDQWzWWq2ss0fIa63T7rV4X7pzwfka3FhKKlhTPg/uFUXeM\numGz+atgsknxh9LrqfxBNc30wgGPdxoW1CjmhJ/CXvKkKvszhC5/tQGm1ry/cTNd\ns6vfb60EJg9V5hXDpVDGFtzl\n-----END PRIVATE KEY-----\n",
+  "client_email": "canvas-replica-151715@appspot.gserviceaccount.com",
+  "client_id": "108466824459492753396",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/canvas-replica-151715%40appspot.gserviceaccount.com"
+}

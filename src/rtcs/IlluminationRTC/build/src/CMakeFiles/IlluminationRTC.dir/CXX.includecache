@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/work/src/classes/Illumination.cpp
+iostream
+-
+iomanip
+-
+sstream
+-
+unistd.h
+-
+sys/ioctl.h
+-
+linux/i2c-dev.h
+-
+fcntl.h
+-
+math.h
+-
+Illumination.h
+/home/pi/work/src/classes/Illumination.h
+
+/home/pi/work/src/classes/Illumination.h
+string
+-
+

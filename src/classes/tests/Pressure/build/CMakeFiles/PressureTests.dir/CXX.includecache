@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../../Pressure.h
+string
+-
+
+/home/pi/work/src/classes/tests/Pressure/PressureTests.cpp
+iostream
+-
+string
+-
+vector
+-
+iomanip
+-
+unistd.h
+-
+Pressure.h
+/home/pi/work/src/classes/tests/Pressure/Pressure.h
+

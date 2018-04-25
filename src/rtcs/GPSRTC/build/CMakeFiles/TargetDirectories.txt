@@ -1,0 +1,5 @@
+/home/pi/work/src/rtcs/GPSRTC/build/idl/CMakeFiles/ALL_IDL_TGT.dir
+/home/pi/work/src/rtcs/GPSRTC/build/idl/CMakeFiles/BasicDataType_TGT.dir
+/home/pi/work/src/rtcs/GPSRTC/build/src/CMakeFiles/GPSRTC.dir
+/home/pi/work/src/rtcs/GPSRTC/build/src/CMakeFiles/GPSRTCComp.dir
+/home/pi/work/src/rtcs/GPSRTC/build/CMakeFiles/uninstall.dir

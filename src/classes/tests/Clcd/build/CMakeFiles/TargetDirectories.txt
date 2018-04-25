@@ -1,0 +1,1 @@
+/home/pi/work/src/classes/tests/Clcd/build/CMakeFiles/ClcdTests.dir

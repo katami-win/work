@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/work/src/classes/Uart.cpp
+string
+-
+iostream
+-
+iomanip
+-
+sys/types.h
+-
+sys/stat.h
+-
+fcntl.h
+-
+string.h
+-
+Uart.h
+/home/pi/work/src/classes/Uart.h
+
+/home/pi/work/src/classes/Uart.h
+string
+-
+termios.h
+-
+unistd.h
+-
+

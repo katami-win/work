@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/work/src/classes/HumidityTemperature.cpp
+iostream
+-
+iomanip
+-
+sstream
+-
+unistd.h
+-
+sys/ioctl.h
+-
+linux/i2c-dev.h
+-
+fcntl.h
+-
+HumidityTemperature.h
+/home/pi/work/src/classes/HumidityTemperature.h
+
+/home/pi/work/src/classes/HumidityTemperature.h
+string
+-
+

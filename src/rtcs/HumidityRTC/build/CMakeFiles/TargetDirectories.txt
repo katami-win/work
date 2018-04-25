@@ -1,0 +1,5 @@
+/home/pi/work/src/rtcs/HumidityRTC/build/idl/CMakeFiles/ALL_IDL_TGT.dir
+/home/pi/work/src/rtcs/HumidityRTC/build/idl/CMakeFiles/BasicDataType_TGT.dir
+/home/pi/work/src/rtcs/HumidityRTC/build/src/CMakeFiles/HumidityRTC.dir
+/home/pi/work/src/rtcs/HumidityRTC/build/src/CMakeFiles/HumidityRTCComp.dir
+/home/pi/work/src/rtcs/HumidityRTC/build/CMakeFiles/uninstall.dir

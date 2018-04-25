@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "iotsemi1612",
+  "private_key_id": "105e34905c61deff0b718ea2772eeb98f66b85e9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC1ZAhZy54NqcRR\nQJzDA8W2i/CO/fl3m8MTIHCdFk0NCq/GAVVj8YAAofqzjWO00Cc/j5TW7USsKjdQ\nIFrg6zspwb9XSQ8zFzG6ojlQysim46OLzgItFhBMAHxB5JWG6kkv/RKaOYqaCA7C\n42WxkoSxk5U7CK+a4223j1dsQ7UAN855UFueVr2f1HudWg53NgvodTE8Q28tQRVM\nc+GAJpskzbMlJUkQhMqJVRfm+Z9pNzMrUuTj+ABb9tTpKu64w37XQS2IRDYDknS4\nD39XIavl0pDRAryudN4oyj6XostFrWHtckip1qbThyRXMstpXmKfLchQkkZrq55I\nGuBfeG9VAgMBAAECggEACmdtbzEVpLT7FKn/E9Rwj7LhHmKE345olv1CWFBCJSBa\nyqGi8zOT4vVnesr+UA2sYqHqqJU9Xh6hw4/HhqUXZKK/RdNj8ss+x/SsEu0+qwvd\ngpRTXaCpWKKifekNhoqDniQG4B+yynjx183RNGkyATl00skBwYGP9npbSlNr21I/\nY+Gcj/GjwADV8ZhbyGfMT444UMuLUasngFI8/Bgi+vyNe2eLnqmmVJ8mPQS5LLkR\nHt1lvxBdp2jemNbXIRvCgEB+nv0C7PQ2Ax/P78IxtjUiEXU7UITrhiTM3c1S3ihn\nxWkHvieEfigt+U2LG/us0lpgjxzxQXnZDaTnNPx7AQKBgQDdY7JaZcCbq2BMaYeO\nvBqQoj9EfDK1HMTBy/jMEemBxcgaM81T1oFN3NIeQ37WuB4XF3UbWjjn11Euys1N\nkSBCyKx8nIDDlSJjQ5I/45Nno4BtUZO454UnPEZ4ENHJJbOS4pLnMpYTwGgVxMpF\nY/WsLbSv+1NgwMvHucVOjxKsQQKBgQDRv4jc0OtrMK9wE1ECTQNTAEzz1PuJ+BKM\n4WjPq5dmHXhjNlSNFSbD0sDBGftZhFZ7OPKEYcMiEWF6JM5GPZMNeTsTbvSOJtob\ncYExlmppjWGUTfhk+jO/KPfkCtsKvcCbXVvuW9tlrAkM+QEu0CrAhUcLkHYajiC0\nVazjV1TOFQKBgQCWi1XbvLeF47qfG1+vwt+5nGqzUlVU7RQqyF4Nvtxvf6O7laA5\nM3NIFDHZnIIi1p63ix76E5cAqF0vGX8UEOzEHRuVvQKefMoef/NyeHljDz6kl8WB\nBgZ4kLdGrAFL69Q5vNKyXqbJFZxxuRjmqLuFcqscxCWFdHTeAshVzFqhQQKBgH+g\nsmDa50UUHMxvlI132xv4RNrhsCVlw7PhvOsQmFFUgVqtRomKY0ooxY06iA0ST6Uv\nI7KV4iyqssul9bYb5Yz/RYkvrLOKxJCKYniP9DRCCSw6vXiEHlSlUyF50YsZp0di\naXwCfN/C7MbuBWA83qbC8lYBEzxZW2Ef+NFk5H95AoGBAK6v8Ef14DuavdTTP2td\n/YFAvqxk9k57w7NGDLFlch3QqNZPaJyCeuqu6R+pa0USelZW15PN+5KbDHYukxC8\n04FQCmVzeqTGx9xjC84jPwO900QE0o2ir9qLdFL1xUoj3LNOtj9XdfjJ7j+bafL4\n8KeQNsJNlXzdF3mU0BE/yJuB\n-----END PRIVATE KEY-----\n",
+  "client_email": "iotsemi1612@appspot.gserviceaccount.com",
+  "client_id": "116249230601027532566",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/iotsemi1612%40appspot.gserviceaccount.com"
+}

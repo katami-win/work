@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "iot-seminar-project-184116",
+  "private_key_id": "6d833cb23f4bb40cd61eeabf119e4d0d99b6ccd6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCrElUkMFch2IAz\naDiUOwlOSPl6jomqtlVdVt6bKkycHc4ouK8MbTBZbfWyY8Q5e03+7OJuNHAuoy3S\nAuJ/pEt6cnRe6pzibyBaVxa7lTx3cxh5RUHSAT9Mdh4YxTb0spoo9IIhomdPqC5T\nKE7+ehge/TggBw3lotX636OWdLKIB4tgCyeEAuUNdT+MaqpKr7t9GG9P9DHsMAup\npQ5erS1CR7Ra0ikWl8yuqeg5mKG/e6lVZqu4b+Xa+tAL+9s29MeeHhIQOpaEYqsM\nv5ZmAz+nzw1M70X7GCE5/zcDpEeHA0D59werE0ZSrnFlpY15NW1OYPToxo+o6Oc3\naKh8ftH1AgMBAAECggEABGDNe4XeMQBOtaIY8pg5Mn71HZEYzlzoveELhOqV99fe\nbxXc6wM/XcaN53EctEDm29uZpuriJRtpgIqw28XrZZiYyFYWSkhASneYnhfhaogw\nS+g9GUANa+pI9mbTs3r/rYUmcHBs1vHNr7SkIuiiheaCoXU0wpgChG9lSyQ07nzC\nJHfxw8JxSee55UqRS0iQrsJVc75Q/rCOJ9n92O/8ZHlV5T3qyvJiF0egAK3OUUZe\nTbJgGZ+XrJRY479qwjH4F3y/YEJBX5GhPkHq8SPv1vXolJEhFYDDnuhrwLNhavFu\nFGG1UNjdtVrySAfFRZAHBu/6T9cPxni6tXB4UbBmsQKBgQDt2DNK5oBLi9e/18Vc\nFQKVmYto5D4HFxXk/iarxpyryiFcmszNtu0xAGiEMGGy0cYP9TMYVlmWeXMIX9BM\nuUDhJ9oS54mGQC9YfsKjWq1myTA2YyiEaL8sGtrE8TD0eQDqHNVu3sOFrfh/7osh\nO9+D9OpuZv79Kc5cOVoT/tKrRQKBgQC4IUzbGJNEZlSIl/6yKtxuOXrA4rj+Jhpx\nF3Ue3/qhEe28ls0RrH07nOYc01O0a6O6tzY9VnUzdiHdj4FLxjStRS5h1XMdCbRJ\nOSOSnGQoyZiJiHr9dYYAu8X7E+sVV60+goA8aOvPHAtbglBLJOg7i+ge+YmpsPmf\nnCe5hIue8QKBgDfuxAE1O66IcHBZGbyR5E2yEirUohGgyDFV41o6FtX/buEMNmWa\nQyVm5y1PA2q+Eknma+GpTOAqJ3cssRuZ5TwN1ybi9GBx77Br/vHTfTvSzFe98eVR\njMOefRwbbFvRqPllVnwAPxLM2sebHXTvU50Al7Dm38hBcJoXkqtpHbnRAoGAE2q3\njxctWHYuDeVxX1pzuk/naPW/qlVcTna5zBK0fE3Gsy932phE8IdgIMQMPKdpMaRm\nXNuEKnQXqCSc7t+s6GS2Omzm4bYHQ/15idliGob/xekVhyrgga1LeGmmTa7cPw5F\n9Zje3Q1JCVJZo0L2Fmlvheysnq9h83nlGoQmsRECgYBXyc/c02rd8R8NivaLjxVh\nSCWcGEq0BGevyeE0JElNkO5DuuUGdenPlLyhFY3sKYRqDi2og1vJWL5nvOUchYpt\ncqNY/OkcQwtzlGKDXeKBqLeXeREFd8OBsybk8QIYI+ibN9tqLefwOV3G5NxWhRjF\nHbEFYJslGMLTOSo91NvZEg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "access-the-spreadsheet@iot-seminar-project-184116.iam.gserviceaccount.com",
+  "client_id": "109701754772484719182",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/access-the-spreadsheet%40iot-seminar-project-184116.iam.gserviceaccount.com"
+}

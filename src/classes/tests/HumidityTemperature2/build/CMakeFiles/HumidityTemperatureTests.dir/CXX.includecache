@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../../HumidityTemperature2.h
+string
+-
+
+../../../Task.h
+pthread.h
+-
+
+/home/pi/work/src/classes/tests/HumidityTemperature2/HumidityTemperatureTests.cpp
+iostream
+-
+unistd.h
+-
+HumidityTemperature2.h
+/home/pi/work/src/classes/tests/HumidityTemperature2/HumidityTemperature2.h
+Task.h
+/home/pi/work/src/classes/tests/HumidityTemperature2/Task.h
+

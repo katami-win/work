@@ -1,0 +1,5 @@
+/home/pi/work/src/rtcs/TemperatureRTC/build/idl/CMakeFiles/ALL_IDL_TGT.dir
+/home/pi/work/src/rtcs/TemperatureRTC/build/idl/CMakeFiles/BasicDataType_TGT.dir
+/home/pi/work/src/rtcs/TemperatureRTC/build/src/CMakeFiles/TemperatureRTC.dir
+/home/pi/work/src/rtcs/TemperatureRTC/build/src/CMakeFiles/TemperatureRTCComp.dir
+/home/pi/work/src/rtcs/TemperatureRTC/build/CMakeFiles/uninstall.dir

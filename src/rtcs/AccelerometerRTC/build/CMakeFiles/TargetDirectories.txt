@@ -1,0 +1,5 @@
+/home/pi/work/src/rtcs/AccelerometerRTC/build/idl/CMakeFiles/ALL_IDL_TGT.dir
+/home/pi/work/src/rtcs/AccelerometerRTC/build/src/CMakeFiles/AccelerometerRTC.dir
+/home/pi/work/src/rtcs/AccelerometerRTC/build/src/CMakeFiles/AccelerometerRTCComp.dir
+/home/pi/work/src/rtcs/AccelerometerRTC/build/idl/CMakeFiles/BasicDataType_TGT.dir
+/home/pi/work/src/rtcs/AccelerometerRTC/build/CMakeFiles/uninstall.dir

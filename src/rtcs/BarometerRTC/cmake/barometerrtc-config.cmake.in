@@ -1,0 +1,54 @@
+# BarometerRTC CMake config file
+#
+# This file sets the following variables:
+# BarometerRTC_FOUND - Always TRUE.
+# BarometerRTC_INCLUDE_DIRS - Directories containing the BarometerRTC include files.
+# BarometerRTC_IDL_DIRS - Directories containing the BarometerRTC IDL files.
+# BarometerRTC_LIBRARIES - Libraries needed to use BarometerRTC.
+# BarometerRTC_DEFINITIONS - Compiler flags for BarometerRTC.
+# BarometerRTC_VERSION - The version of BarometerRTC found.
+# BarometerRTC_VERSION_MAJOR - The major version of BarometerRTC found.
+# BarometerRTC_VERSION_MINOR - The minor version of BarometerRTC found.
+# BarometerRTC_VERSION_REVISION - The revision version of BarometerRTC found.
+# BarometerRTC_VERSION_CANDIDATE - The candidate version of BarometerRTC found.
+
+message(STATUS "Found BarometerRTC-@PROJECT_VERSION@")
+set(BarometerRTC_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(BarometerRTC_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(BarometerRTC_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(BarometerRTC_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(BarometerRTC_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(BarometerRTC_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(BarometerRTC_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(BarometerRTC_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(BarometerRTC_VERSION @PROJECT_VERSION@)
+set(BarometerRTC_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(BarometerRTC_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(BarometerRTC_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(BarometerRTC_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+
