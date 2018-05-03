@@ -27,6 +27,8 @@ int main(int argc, char* argv[])
           }
 
       }
+    ::closedir(dir_ptr);
+
     std::vector<std::string>::iterator it(flist.begin());
     while (it != flist.end())
       {

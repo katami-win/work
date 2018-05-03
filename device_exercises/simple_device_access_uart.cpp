@@ -13,7 +13,7 @@
 
 int main(int argc, char* argv[])
 {
-    //int m_uart = ::open("/dev/ttyAMA0", O_RDWR | O_NOCTTY);
+    //int m_uart = ::open("/dev/ttyS0", O_RDWR | O_NOCTTY);
     int m_uart = ::open(set device name, O_RDWR | O_NOCTTY);
     if(m_uart < 0)
       {
@@ -21,9 +21,8 @@ int main(int argc, char* argv[])
         return false;
       }
     struct termios old_term_io;
-    ::tcgetattr(m_uart, &old_term_io);
-
     struct termios new_term_io;
+    ::tcgetattr(m_uart, &old_term_io);
     new_term_io.c_iflag = 0;
     new_term_io.c_oflag = 0;
     new_term_io.c_cflag = 0;
@@ -45,25 +44,36 @@ int main(int argc, char* argv[])
     char buf[256];
     buf[0] = '\0';
     int rp = 0;
+    int step = 0;
     for(;;)
       {
         //read(m_uart, (char *)&cbuf, 1);
         read(set handle, (char *)&cbuf, 1);
-        if(cbuf == '$')
+        switch(step)
           {
-            buf[0] = cbuf;
-            rp = 1;
-          }
-        else if(cbuf == '\n')
-          {
-            break;
-          }
-        else
-          {
+          case 0:
+            if(cbuf == '$')
+              {
+                buf[0] = cbuf;
+                rp = 1;
+                step = 1;
+              }
+	    break;
+          case 1:
             buf[rp] = cbuf;
             rp++;
+            if(cbuf == '\n')
+              {
+                step = 2;
+              }
+	    break;
+          }
+        if(step == 2)
+          {
+	    break;
           }
       }
+
     buf[rp] = '\0';
     ret = std::string(buf);
     std::cout<<ret<<std::endl;
