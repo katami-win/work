@@ -32,6 +32,13 @@ int main(int argc, char* argv[])
     g_sig = 0;
     ::signal(SIGINT,handler);
     
+    std::cout<<"* i2c"<<std::endl;
+    ::system("sudo i2cdetect -y 1");
+    std::cout<<"* 1-wire"<<std::endl;
+    ::system("ls /sys/bus/w1/devices/");
+    std::cout<<"* uart"<<std::endl;
+    ::system("ls /dev/ttyS0");
+
     //
     //Accelerometer initialization
     // 
@@ -176,7 +183,7 @@ int main(int argc, char* argv[])
         ::read(pressure, &coefficientData[ic], 1);
         ::usleep(5000);
       }
-
+/*
     { //for debug
       std::cout<<"  coefficientData  "<<std::flush;
       std::stringstream ss;
@@ -186,13 +193,16 @@ int main(int argc, char* argv[])
         }
       std::cout<<ss.str()<<std::endl;
     }
+*/
 
     unsigned short tempData;
     tempData = ((unsigned short)(coefficientData[0]) << 8) + coefficientData[1];
+/*
     { //for debug
       std::cout<<std::hex<<"  tmpDt = "<< tempData <<std::endl;
       std:: cout << resetiosflags(std::ios_base::basefield);
     }
+*/
     {
     //a0 Signed, Integer Bits = 12, Fractional Bits = 3 :
     //ex)
@@ -228,14 +238,18 @@ int main(int argc, char* argv[])
         ret = ret * (-1.0);
       }  
     m_a0 = ret;
+/*
     std::cout<<"  a0 = "<< m_a0 <<std::endl;
     std:: cout << resetiosflags(std::ios_base::floatfield);
+*/
     }
     tempData = ((unsigned short)(coefficientData[2]) << 8) + coefficientData[3];
+/*
     { //for debug 
       std::cout<<std::hex<<"  tmpDt = "<< tempData <<std::endl;
       std:: cout << resetiosflags(std::ios_base::basefield);
     }
+*/
     {
     //b1 Signed, Integer Bits = 2, Fractional Bits = 13 :
     //ex)
@@ -272,15 +286,18 @@ int main(int argc, char* argv[])
         ret = ret * (-1.0);
       }  
     m_b1 = ret;
+/*
     std::cout<<"  b1 = "<< m_b1 <<std::endl;
     std:: cout << resetiosflags(std::ios_base::floatfield);
-
+*/
     }
     tempData = ((unsigned short)(coefficientData[4]) << 8) + coefficientData[5];
+/*
     { // for debug
       std::cout<<std::hex<<"  tmpDt = "<< tempData <<std::endl;
       std:: cout << resetiosflags(std::ios_base::basefield);
     }
+*/
     {
     //b2 Signed, Integer Bits = 1, Fractional Bits = 14 :
     //ex)
@@ -318,16 +335,19 @@ int main(int argc, char* argv[])
         ret = ret * (-1.0);
       }  
     m_b2 = ret;
+/*
     std::cout<<"  b2 = "<< m_b2 <<std::endl;
     std:: cout << resetiosflags(std::ios_base::floatfield);
-
+*/
     }
 
     tempData = ((unsigned short)(coefficientData[6]) << 8) + coefficientData[7];
+/*
     { //for debug
       std::cout<<std::hex<<"  tmpDt = "<< tempData <<std::endl;
       std:: cout << resetiosflags(std::ios_base::basefield);
     }
+*/
     {
     //c12 Signed, Integer Bits = 0, Fractional Bits = 13,  dec pt zero pad = 9 : 
     //ex)
@@ -363,8 +383,10 @@ int main(int argc, char* argv[])
         ret = ret * (-1.0);
       }  
     m_c12 = ret;
+/*
     std::cout<<"  c12 = "<< m_c12 <<std::endl;
     std:: cout << resetiosflags(std::ios_base::floatfield);
+*/
 
     }
 
@@ -444,6 +466,8 @@ int main(int argc, char* argv[])
     ::tcflush(uart, TCIFLUSH);
     ::tcsetattr(uart, TCSANOW, &new_term_io);
   
+    std::cout<<"** Press Enter key to start the demonstration. **"<<std::endl;
+    getchar();
     //
     //get data
     //
@@ -634,14 +658,34 @@ int main(int argc, char* argv[])
           {
             vstr.push_back(buffer);
           }
+        double lat = 0.0;
+        double lon = 0.0;
         if(vstr[0].compare("$GPGGA")==0)
           {
-            std::cout<<" "<<vstr[2]<<"N "<<vstr[4]<<"E "<<std::flush;
+            lat = std::stod(vstr[2]);
+            lon = std::stod(vstr[4]);
+            lat = lat /100.0;
+            lon = lon /100.0;
+            std::cout<<" "<<vstr[0]<<" "<<lat<<"N "<<lon<<"E "<<std::flush;
+            //std::cout<<" "<<vstr[2]<<"N "<<vstr[4]<<"E "<<std::flush;
           }
+        else if(vstr[0].compare("$GPRMC")==0)
+          {
+            lat = std::stod(vstr[3]);
+            lon = std::stod(vstr[5]);
+            lat = lat /100.0;
+            lon = lon /100.0;
+            std::cout<<" "<<vstr[0]<<" "<<lat<<"N "<<lon<<"E "<<std::flush;
+          }
+        else
+          {
+            std::cout<<" "<<std::flush;
+          }
+
         
         //wait
         std::cout << std::endl;
-        ::sleep(1); 
+        //::usleep(300000);
 
       }
     //
