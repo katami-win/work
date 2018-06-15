@@ -13,7 +13,6 @@ import os
 import sys
 import json
 import gspread
-from oauth2client.client import SignedJwtAssertionCredentials
 import datetime
 from datetime import datetime as dt
 import time
