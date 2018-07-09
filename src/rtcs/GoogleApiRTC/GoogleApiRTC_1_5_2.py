@@ -3,8 +3,8 @@
 # -*- Python -*-
 
 """
- @file CollectDataRTC.py
- @brief CollectData
+ @file GoogleApiRTC.py
+ @brief GoogleApi
  @date $Date$
 
 
@@ -13,11 +13,10 @@ import os
 import sys
 import json
 import gspread
-#from oauth2client.client import SignedJwtAssertionCredentials
+from oauth2client.client import SignedJwtAssertionCredentials
 import datetime
 from datetime import datetime as dt
 import time
-import csv
 sys.path.append(".")
 
 # Import RTM module
@@ -37,9 +36,9 @@ import OpenRTM_aist
 
 # This module's spesification
 # <rtc-template block="module_spec">
-googlapirtc_spec = ["implementation_id", "CollectDataRTC", 
-		 "type_name",         "CollectDataRTC", 
-		 "description",       "CollectData", 
+googlapirtc_spec = ["implementation_id", "GoogleApiRTC", 
+		 "type_name",         "GoogleApiRTC", 
+		 "description",       "GoogleApi", 
 		 "version",           "1.0.0", 
 		 "vendor",            "WIN ELECTRONIC INDUSTRIES", 
 		 "category",          "Category", 
@@ -51,11 +50,11 @@ googlapirtc_spec = ["implementation_id", "CollectDataRTC",
 # </rtc-template>
 
 ##
-# @class CollectDataRTC
-# @brief CollectData
+# @class GoogleApiRTC
+# @brief GoogleApi
 # 
 # 
-class CollectDataRTC(OpenRTM_aist.DataFlowComponentBase):
+class GoogleApiRTC(OpenRTM_aist.DataFlowComponentBase):
 	
 	##
 	# @brief constructor
@@ -146,6 +145,24 @@ class CollectDataRTC(OpenRTM_aist.DataFlowComponentBase):
 		
 		# Set CORBA Service Ports
 
+                doc_id =  '1zfIg5z7F5sbm5BZdUFzeOj9r8TzJjjdOpIc6bAPUyiU'
+		#doc_id =  '1gX4qhtt2R9PtdDMO7Pz-M_q9cZsHjn1EWfe49IPG64A'
+		#doc_id =  '1NS4xM_mrjiJWngWJFau-IGMEcpP_fhxToyVhlohCjBA'
+
+		#json_key    = json.load(open('./iotsemi1612-695af2de0f12.json'))
+		#json_key    = json.load(open('./iotseminar-ef7d285054b5.json'))
+                json_key    = json.load(open('My Project 1-ee3a4064b9e6.json'))
+		scope       = ['https://spreadsheets.google.com/feeds']
+		#print json_key['client_email']
+		credentials = SignedJwtAssertionCredentials(
+			json_key['client_email'], 
+			json_key['private_key'].encode(), 
+			scope)
+
+		gclient = gspread.authorize(credentials)
+		gfile   = gclient.open_by_key(doc_id)
+		#self._wsheet  = gfile.worksheet(os.uname()[1])
+		self._wsheet  = gfile.get_worksheet(0)
 
 		self._uploadData = {}
 		return RTC.RTC_OK
@@ -234,7 +251,7 @@ class CollectDataRTC(OpenRTM_aist.DataFlowComponentBase):
 		if self._data001In.isNew():
 			indata = self._data001In.read()
 			arg = indata.data.split(':')
-			#print arg
+			print arg
 			self._uploadData[arg[1]] = arg[3]
 			flag = 1;
 		if self._data002In.isNew():
@@ -272,7 +289,7 @@ class CollectDataRTC(OpenRTM_aist.DataFlowComponentBase):
 			arg = indata.data.split(':')
 			self._uploadData[arg[1]] = arg[3]
 			flag = 1;
-                #print flag
+                print flag
 		if flag != 0:
 			tdatetime = dt.now()
 			data = []
@@ -283,15 +300,10 @@ class CollectDataRTC(OpenRTM_aist.DataFlowComponentBase):
 			for key in items:
 				if key in self._uploadData:
 					data.append(self._uploadData[key])
-					#print key
 				else:
 					data.append('None')
 			print data
-			file = open('testdata.txt','a')
-			csvw = csv.writer(file)
-			csvw.writerow(data)
-			#file.write(data)
-			file.close()
+			self._wsheet.append_row(data)
 			flag = 0;
 		return RTC.RTC_OK
 	
@@ -369,17 +381,17 @@ class CollectDataRTC(OpenRTM_aist.DataFlowComponentBase):
 
 
 
-def CollectDataRTCInit(manager):
+def GoogleApiRTCInit(manager):
     profile = OpenRTM_aist.Properties(defaults_str=googlapirtc_spec)
     manager.registerFactory(profile,
-                            CollectDataRTC,
+                            GoogleApiRTC,
                             OpenRTM_aist.Delete)
 
 def MyModuleInit(manager):
-    CollectDataRTCInit(manager)
+    GoogleApiRTCInit(manager)
 
     # Create a component
-    comp = manager.createComponent("CollectDataRTC")
+    comp = manager.createComponent("GoogleApiRTC")
 
 def main():
 	mgr = OpenRTM_aist.Manager.init(sys.argv)
