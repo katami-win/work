@@ -118,7 +118,7 @@ RTC::ReturnCode_t BarometerRTC::onExecute(RTC::UniqueId ec_id)
 {
   struct utsname systeminfo;
   ::uname(&systeminfo);
-  std::cout<<systeminfo.nodename<<std::endl;
+  //std::cout<<systeminfo.nodename<<std::endl;
   std::stringstream stringBuffer;
   stringBuffer.str("");
   stringBuffer<<systeminfo.nodename<<":"<<"Barometer"<<":"

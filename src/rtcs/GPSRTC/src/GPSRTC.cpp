@@ -119,19 +119,10 @@ RTC::ReturnCode_t GPSRTC::onExecute(RTC::UniqueId ec_id)
   stringBuffer.str("");
 
   std::string str("");
-  for(int ic=0;ic<7;++ic)
-   {
-      str = m_gps.readGPGGA();
-      if (str.empty())
-        {
-          break;
-        }
-      std::string::size_type found_pos(0); 
-      found_pos = str.find("GPGGA", 0);
-      if(found_pos != std::string::npos)
-        {
-          break;
-        }
+  str = m_gps.readGPGGA();
+  if (str.empty())
+    {
+      return RTC::RTC_OK;
     }
   std::string::size_type pos(0); 
   pos = str.find("\r\n", 0);

@@ -316,13 +316,13 @@ namespace WEIApp
         ::usleep(5000);
       }
 
-    std::cout<<"adcCounts"<<std::endl;
-    std::stringstream ss;
-    for(int ic=0;ic<4;++ic)
-      {
-        ss << std::hex << (int)adcCounts[ic] <<" ";
-      }
-    std::cout<<ss.str()<<std::endl;
+    //std::cout<<"adcCounts"<<std::endl;
+    //std::stringstream ss;
+    //for(int ic=0;ic<4;++ic)
+    //  {
+    //    ss << std::hex << (int)adcCounts[ic] <<" ";
+    //  }
+    //std::cout<<ss.str()<<std::endl;
     unsigned short tempData;
     tempData = ((unsigned short)(adcCounts[0]) << 8) + adcCounts[1];
     double padc;
@@ -337,8 +337,8 @@ namespace WEIApp
     unsigned short integer = (tempData & 0xffc0) >> 6;
 
     padc = (double)integer;
-    std::cout<<"padc = "<< padc <<std::endl;
-    std:: cout << resetiosflags(std::ios_base::floatfield);
+    //std::cout<<"padc = "<< padc <<std::endl;
+    //std:: cout << resetiosflags(std::ios_base::floatfield);
 
     }
     tempData = ((unsigned short)(adcCounts[2]) << 8) + adcCounts[3];
@@ -354,14 +354,14 @@ namespace WEIApp
     unsigned short integer = (tempData & 0xffc0) >> 6;
 
     tadc = (double)integer;
-    std::cout<<"tadc = "<< tadc <<std::endl;
-    std:: cout << resetiosflags(std::ios_base::floatfield);
+    //std::cout<<"tadc = "<< tadc <<std::endl;
+    //std:: cout << resetiosflags(std::ios_base::floatfield);
 
     }
     double pcomp = m_a0 + (m_b1 + m_c12 * tadc) * padc + m_b2 * tadc; 
-    std::cout<<"pcomp = "<< pcomp <<std::endl;
+    //std::cout<<"pcomp = "<< pcomp <<std::endl;
     double pressure = pcomp * ((1150.0-500.0)/1023.0) + 500.0;
-    std::cout<<"pressure = "<< pressure <<std::endl;
+    //std::cout<<"pressure = "<< pressure <<std::endl;
 
     return pressure;
 

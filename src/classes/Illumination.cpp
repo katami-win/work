@@ -32,10 +32,10 @@ namespace WEIApp
    */
   Illumination::Illumination()
   {
-    //m_i2cFilename = "/dev/i2c-1";
-    m_i2cFilename = //To specify the device file
-    //m_illuminationAddress = ILLUMINATION_ADDRESS;
-    m_illuminationAddress = // Specifies the slave address.
+    m_i2cFilename = "/dev/i2c-1";
+    //m_i2cFilename = //To specify the device file
+    m_illuminationAddress = ILLUMINATION_ADDRESS;
+    //m_illuminationAddress = // Specifies the slave address.
   }
   /*!
    * @brief Destructor
@@ -68,9 +68,9 @@ namespace WEIApp
     char buf[256];
 
     //enable the device
-    //buf[0] = 0x80; buf[1] = 0x03;
-    buf[0] = Set ControlRegister
-    buf[1] = Set PowerUp 
+    buf[0] = 0x80; buf[1] = 0x03;
+    //buf[0] = Set ControlRegister
+    //buf[1] = Set PowerUp 
     ::write(m_illumination, buf, 2);
 
     ::usleep(400000);
@@ -121,8 +121,8 @@ namespace WEIApp
   {
     char buf[256];
 
-    //buf[0] = 0xac;
-    buf[0] = set ADCChannel0DataRegisters
+    buf[0] = 0xac;
+    //buf[0] = set ADCChannel0DataRegisters
     ::write(m_illumination, buf, 1);
     ::read(m_illumination, buf, 2);
     
@@ -142,8 +142,8 @@ namespace WEIApp
   {
     char buf[256];
 
-    //buf[0] = 0xae;
-    buf[0] = set ADCChannel1DataRegisters
+    buf[0] = 0xae;
+    //buf[0] = set ADCChannel1DataRegisters
     ::write(m_illumination, buf, 1);
     ::read(m_illumination, buf, 2);
     

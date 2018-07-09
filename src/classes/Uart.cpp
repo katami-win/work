@@ -10,6 +10,7 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <vector>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -28,7 +29,8 @@ namespace WEIApp
    */
   Uart::Uart()
   {
-    m_i2cFilename = "/dev/ttyAMA0";
+    //m_i2cFilename = "/dev/ttyAMA0";
+    m_i2cFilename = "/dev/ttyS0";
     m_status = 0;
     m_is_indicating = false;
     m_indicatingCount = 60;
@@ -93,45 +95,80 @@ namespace WEIApp
     //$GPGGA,085120.307,3541.1493,N,13945.3994,E,1,08,1.0,6.9,M,35.9,M,,0000*5E
     std::string ret;
     char cbuf;
-    char buf[256];
-    buf[0] = '\0';
+    char ubuf[256];
+    //char buf[256];
+    //buf[0] = '\0';
     //int res;
     int rp = 0;
+    int step = 0;
     for(;;)
       {
         //res = read(m_uart, (char *)&cbuf, 1);
         read(m_uart, (char *)&cbuf, 1);
-        if(cbuf == '$')
+        switch(step)
           {
-            buf[0] = cbuf;
-            rp = 1;
-          }
-        //else if(cbuf == '\r' || cbuf == '\n')
-        else if(cbuf == '\n')
-          {
-            if(
-                buf[1] == 'G' &&
-                buf[2] == 'P' &&
-                buf[3] == 'G' &&
-                buf[4] == 'G' &&
-                buf[5] == 'A'
-            )
+          case 0:
+            if(cbuf == '$')
               {
-                break;
+                ubuf[0] = cbuf;
+                rp = 1;
+                step = 1;
               }
-          }
-        else
-          {
-            buf[rp] = cbuf;
+            break;
+          case 1:
+            ubuf[rp] = cbuf;
             rp++;
-            //if(cbuf == '*')
-            //  {
-            //    break;
-            //  }
+            if(cbuf == '\n')
+              {
+                step = 2;
+              }
+            break;
+          }
+        if(step == 2)
+          {
+            break;
           }
       }
-    buf[rp] = '\0';
-    ret = std::string(buf);
+    ubuf[rp] = '\0';
+    ret = std::string(ubuf);
+    std::vector<std::string> vstr;
+    std::stringstream u_ss(ret);
+    std::string buffer;
+    while( std::getline(u_ss, buffer, ',') ) 
+      {
+        vstr.push_back(buffer);
+      }
+    std::stringstream ss;
+    double lat = 0.0;
+    double lon = 0.0;
+    if(vstr[0].compare("$GPGGA")==0)
+      {
+        lat = std::stod(vstr[2]);
+        lon = std::stod(vstr[4]);
+        lat = lat /100.0;
+        lon = lon /100.0;
+        //std::cout<<" "<<vstr[0]<<" "<<lat<<"N "<<lon<<"E "<<std::flush;
+        //ss<<vstr[0]<<","<<lat<<"N,"<<lon<<"E "<<std::flush;
+        ss<<lat<<"N,"<<lon<<"E "<<std::flush;
+        //std::cout<<" "<<vstr[2]<<"N "<<vstr[4]<<"E "<<std::flush;
+      }
+    else if(vstr[0].compare("$GPRMC")==0)
+      {
+        lat = std::stod(vstr[3]);
+        lon = std::stod(vstr[5]);
+        lat = lat /100.0;
+        lon = lon /100.0;
+        //std::cout<<" "<<vstr[0]<<" "<<lat<<"N "<<lon<<"E "<<std::flush;
+        //ss<<vstr[0]<<","<<lat<<"N,"<<lon<<"E "<<std::flush;
+        ss<<lat<<"N,"<<lon<<"E"<<std::flush;
+      }
+    else
+      {
+        //std::cout<<" "<<std::flush;
+        return "";
+      }
+    //std::cout<<ss.str()<<std::endl;
+    ret = ss.str();
     return ret;
 
   }
