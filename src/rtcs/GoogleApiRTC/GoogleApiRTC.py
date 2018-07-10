@@ -259,7 +259,7 @@ class GoogleApiRTC(OpenRTM_aist.DataFlowComponentBase):
         if self._data001In.isNew():
             indata = self._data001In.read()
             arg = indata.data.split(':')
-            print arg
+            #print arg
             try:
                 self._uploadData[arg[1]] = float(arg[3])
             except:
@@ -268,6 +268,7 @@ class GoogleApiRTC(OpenRTM_aist.DataFlowComponentBase):
         if self._data002In.isNew():
             indata = self._data002In.read()
             arg = indata.data.split(':')
+            #print arg
             try:
                 self._uploadData[arg[1]] = float(arg[3])
             except:
@@ -276,30 +277,34 @@ class GoogleApiRTC(OpenRTM_aist.DataFlowComponentBase):
         if self._data003In.isNew():
             indata = self._data003In.read()
             arg = indata.data.split(':')
+            #print(arg)
             try:
-                self._uploaddata[arg[1]] = float(arg[3])
+                self._uploadData[arg[1]] = float(arg[3])
             except:
-                self._uploaddata[arg[1]] = arg[3]
+                self._uploadData[arg[1]] = arg[3]
             flag = 1;
         if self._data004In.isNew():
             indata = self._data004In.read()
             arg = indata.data.split(':')
+            #print arg
             try:
-                self._uploaddata[arg[1]] = float(arg[3])
+                self._uploadData[arg[1]] = float(arg[3])
             except:
-                self._uploaddata[arg[1]] = arg[3]
+                self._uploadData[arg[1]] = arg[3]
             flag = 1;
         if self._data005In.isNew():
             indata = self._data005In.read()
             arg = indata.data.split(':')
+            #print arg
             try:
-                self._uploaddata[arg[1]] = float(arg[3])
+                self._uploadData[arg[1]] = float(arg[3])
             except:
-                self._uploaddata[arg[1]] = arg[3]
+                self._uploadData[arg[1]] = arg[3]
             flag = 1;
         if self._data006In.isNew():
             indata = self._data006In.read()
             arg = indata.data.split(':')
+            #print arg
             try:
                 self._uploadData[arg[1]] = float(arg[3])
             except:
@@ -308,6 +313,7 @@ class GoogleApiRTC(OpenRTM_aist.DataFlowComponentBase):
         if self._data007In.isNew():
             indata = self._data007In.read()
             arg = indata.data.split(':')
+            #print arg
             try:
                 self._uploadData[arg[1]] = float(arg[3])
             except:
@@ -316,12 +322,13 @@ class GoogleApiRTC(OpenRTM_aist.DataFlowComponentBase):
         if self._data008In.isNew():
             indata = self._data008In.read()
             arg = indata.data.split(':')
+            print arg
             try:
                 self._uploadData[arg[1]] = float(arg[3])
             except:
                 self._uploadData[arg[1]] = arg[3]
             flag = 1;
-            print flag
+            #print flag
         if flag != 0:
             tdatetime = dt.now()
             data = []
@@ -337,7 +344,7 @@ class GoogleApiRTC(OpenRTM_aist.DataFlowComponentBase):
                     data.append(self._uploadData[key])
                 else:
                     data.append('None')
-            print data
+            print(data)
             self._wsheet.append_row(data)
             flag = 0;
         return RTC.RTC_OK
