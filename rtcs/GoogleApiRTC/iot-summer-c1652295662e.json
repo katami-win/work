@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "iot-summer",
+  "private_key_id": "c1652295662e4790bcd844deee73ac0f191f7ce8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCvoiuiaCPeQfOo\nEuXjYYcqhnyLl+ErX2+bo2hAe+95Qr4LUyBQlBDtKWtoCEf0owY6447WnjjRyxMB\nfjxFX+m+FuXRlYwS/stL61phbAVAJWN3VIV+XmYZYFu+GQ4ejd1xVgUpOuqGWkuK\nYiz+LfnRqVCg8c6u9LqhrQJvfHhhFblFm2jjCqzbXp2b01Tty8zp/WvX9nNS6mZ3\nFf29Jj5awWIb9x65OMjpjc6W9BU04dECtSvElSBJgE1PZF9l+dNHdhLxps4hPJnV\ni2Dnt6lcCxgmm7ByTQ889BS7yv9sWu/0OxfmPmEt+J/oK41tbXsrbBdRPvOgZ6pQ\nNZMywHv3AgMBAAECggEACewhB/NXN2rFb7TlnPN5Fet0JNTHSVKCdSoFrULzNAgT\nwYMIO9UpoaRp5340RnthUjlh6/kTX7LX14lAsXCqPW2AvVb0C2yuopLgz8kxAL87\n/9VcF1gQ75UUichTlmFQZeNEtmAYOM/oHaDPRurlBrXIktcmZJb55kFmdlLzYBSo\nni+993jRnzZ2Bu1gJs2DrvwUqrhrwuRWaleMupcr0cX2bTraF8WpfA1u+i2LfFBY\nMCFed9KNRmpP4vr+g6BdfPP4Jc2O57Q+P+Zx6WKhWQ1/YeKfcYhsV/qCbwLMx/NM\n5wsm8Ieg+KFspLXkvxwhaU/Ufd4OAmC2QJML9bCslQKBgQDe8yDXsWY5pk+liBJX\nVhpQX6XnXuJuER6318iGWXe0zH3LNqoMbBi6u9t1ZB7uwXEcVcJGca/EsqzJqVw3\ngA1k7xDZl+Qkvmqz2Qv0B94DYl35pP4cw+DBzGqBAa4G4kx7PA0GDYgNDvFYOnje\nsa5/XDeEVbgdLnENh0VLxhi5+wKBgQDJq2fagTSj4aHhVkaRgrJ0ls3GctlsbjZ8\naZTRBdzD6nIteYX0E9Kzp/sVkcxbmMEeSt3EFm3xJYe/b8Nk35r5KU/0rF8VBdAj\nca5IRnRoW1DsEzHUhrW9hr4HFv1r9JCXnNSQ4hxiADuRPJzn2Eaa6QNtbKzXCZyv\nBMuYuDgBNQKBgQDROtpXkeSdtbaJYmnUDLolM54+xI07PlXVsmw9qTjuM/rZ+zMa\n9Vc/54zNXmipKGE+dj0cXxTVQ9lkZ8xjSYlIcBMgIau5z/nTTp4pJjj0dBw9bNoN\npMYJGg3Zg/oN+9JK1NBkHc7QcnWMl1NXquhYHfL7/nYK7MqsJ4ag1gfegQKBgQC+\nGKQ8g65rDDTbg8fhQaGV5NDzTy9D1l/lxmBQ54XB5yzZUMPD3yutzZoQKu7HKKZh\nN5DzVXEs7oOXIHK+k0gxtY94w0KdPm2D+5Sc7EyuUeVlonJGMvT9QhW9+R3ItS/W\nui5ko769YhrEPK5qnKNxQlPIwbfqu1TGZW7E9mFUQQKBgG3GmSfgeWxFLQEZ9yZI\nhgyEuN98ZqNp+em+u1u4mQm7hIrV9gjr0HlZbkx18BBPn+Jf74Yhz0B0cpDdzZN6\nNt7EETV6W9f9KjtP4OXlU1yU3b7TaF5K5tt0aTfUImxbwFJwtHP9qmbNcxdB+wMd\nX++lFD973yP2+iqaA/DUn7n9\n-----END PRIVATE KEY-----\n",
+  "client_email": "access-the-spreadsheet@iot-summer.iam.gserviceaccount.com",
+  "client_id": "104326741433920230752",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/access-the-spreadsheet%40iot-summer.iam.gserviceaccount.com"
+}

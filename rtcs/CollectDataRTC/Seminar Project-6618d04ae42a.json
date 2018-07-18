@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "seminar-project-1385",
+  "private_key_id": "6618d04ae42a789c847971778066cff6a0f43634",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCVLyKWqNXyarav\n+FS+2OQ9s5Lutg0543UyoiCH3RhRJsWkPcoffQjwRJcQ8t8juBrXMJsPLTENneCn\n1B5NZL+RrVJSpcR+feGVIG4owvr9aSVX8o7uHgaqzAs3a56J0kzo+BUnQKNwSDNw\nSyTD4QwYCpsRoHW7e+sAhwFojuay8Y/LJqT5aeQfg+wPl5VLJ+htA67lZVLcoohP\n0ebsrYKHAsPWraZjBDsaPt7P6HLS/7nXBVHGeyExVJWzCp8AyuVmXpP6LmX3+Vme\nHWbj6LohAcuiGAgmhGa2kydLbqjrxOlf9f8pW896z13U0NHXUc2ur5IxPclUpw0r\nGTrL/MA1AgMBAAECggEBAJGnTYvvF8PxMKCqQoN624zqcMCj+lHUpC5lYIGF+iHx\nSvJKabdIqpt7PEsN9ZK4Q2xqRloQ812qEReK4HMLtIYUxNVwh2JAoSiqWyNtCwSz\nzgQKDEasBjJnuWPIrSc+rlyfKngCghA0ThSLKUAdz2MBp9kT4x7Do/QF2/gr3U5D\nS/oRm4R+gqPhovOZh/op7frVlfI3HxAwjdAAxPbiD4BVHVaP6NY8b78MriYKGPZ4\nnOqUVkS5YSQBRJR58oD7tqKJ5S9hnfg1Q4oHhvZOSqQooO0ILRv7/qYBiw/rfCnc\nyMiuzjnJNZIVmtlJEt1OcWuKRCqwkD5xp9Je8cJoxwECgYEA5w/5yTjtOj8KUSLa\naSaD8/F9/JQJyWo9vp+/XtYmvZaeKDdH/4jIwfA0xQEAevjJpusqoYBFGXSDGLLV\nqyyhTOOUa2J6xQuyHnMj38MNNrpgHEEkE4251UIZyiArPD0vs6hrMhxp/t6UZNNG\nlRo0q7qZWoeTWDWJO1yOu06X0GECgYEApUjxo5x4kfVDMJ/jYeqGLAL4OPS/wPMi\nqU97Hly82gGN5fPDNexVzp/91lvMykvQU3uPiGGcRvIj7Y/8+e4s4MQEkH+Kis6L\n+7FcHxcbOCy1t5T1vUGPTgAOS9bf7jFiOFf6mxXUK8Tf4pDHlglnvvzl4Um85e9g\n4ZQBUMMekFUCgYEAz0gdpM5UwnPbJX5GwR20MhrqErQbM30DdwaH/uPOTTXZG+q7\nxBlJP/Hk5PZJIAgfnoZI8CjJ1FQZZwbHd4/KA9gFRXBLAonDeF2CSTIJoJcBsVce\nrgvuMcniqNjC8H9TU7A6ufGThPjX1rtSDmA77/Ktr/D/1ZnxSjd2M8IFnwECgYA5\nyCFpoCbqZ8KgehTkwzc6paMfTjjG/HiulfGlsKf40rhHnostC70Hqhj0Wk1in1Rq\nCvUnqXAXwUjcIQ1AVopr3Tr3RQ8q7YA0clGRMOO8JK02S6YJDqVJkG1vB+RrAeqj\nZeZfVydAUegu7YxIoGsbco/uzXdzLtdApRw8nqnNrQKBgHHUv7PfuuB6AgiRhtnX\n15ckv85h9g79o9/lauwc47EnU+MvaZu6biYb80y4mX6jZ/SyZnhKkgPDuoupNX7J\nmw4oat82louePIgO7W24x9IN2t/dw20LJTWm5LOwooelQ9YqiVCa+yz1B2UFZCKN\nHJTviqjumx7G5/96F/CJFwpg\n-----END PRIVATE KEY-----\n",
+  "client_email": "zerounit@seminar-project-1385.iam.gserviceaccount.com",
+  "client_id": "117429417809852866513",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/zerounit%40seminar-project-1385.iam.gserviceaccount.com"
+}
