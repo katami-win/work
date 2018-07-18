@@ -1,0 +1,3 @@
+/home/pi/work/classes/tests/Illumination/build/CMakeFiles/rebuild_cache.dir
+/home/pi/work/classes/tests/Illumination/build/CMakeFiles/edit_cache.dir
+/home/pi/work/classes/tests/Illumination/build/CMakeFiles/IlluminationTests.dir

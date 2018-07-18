@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/ClcdTests.dir/ClcdTests.cpp.o CMakeFiles/ClcdTests.dir/home/pi/work/src/classes/Clcd.cpp.o  -o ClcdTests -rdynamic -lwiringPi -lpthread 

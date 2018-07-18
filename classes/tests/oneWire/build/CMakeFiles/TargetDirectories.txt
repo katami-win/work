@@ -1,0 +1,3 @@
+/home/pi/work/classes/tests/oneWire/build/CMakeFiles/rebuild_cache.dir
+/home/pi/work/classes/tests/oneWire/build/CMakeFiles/edit_cache.dir
+/home/pi/work/classes/tests/oneWire/build/CMakeFiles/OneWireTests.dir

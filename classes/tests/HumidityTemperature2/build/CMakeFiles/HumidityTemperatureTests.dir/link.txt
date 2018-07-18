@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/HumidityTemperatureTests.dir/HumidityTemperatureTests.cpp.o CMakeFiles/HumidityTemperatureTests.dir/home/pi/work/classes/HumidityTemperature2.cpp.o CMakeFiles/HumidityTemperatureTests.dir/home/pi/work/classes/Task.cpp.o  -o HumidityTemperatureTests -rdynamic -lpthread 

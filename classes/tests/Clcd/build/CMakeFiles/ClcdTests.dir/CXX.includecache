@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../../Clcd.h
+string
+-
+
+/home/pi/work/src/classes/Clcd.cpp
+string
+-
+iostream
+-
+iomanip
+-
+sys/ioctl.h
+-
+linux/i2c-dev.h
+-
+fcntl.h
+-
+unistd.h
+-
+wiringPi.h
+-
+Clcd.h
+-
+
+/home/pi/work/src/classes/tests/Clcd/ClcdTests.cpp
+iostream
+-
+Clcd.h
+-
+
