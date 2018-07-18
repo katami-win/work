@@ -1,3 +1,0 @@
-/home/pi/work/classes/tests/Pressure/build/CMakeFiles/rebuild_cache.dir
-/home/pi/work/classes/tests/Pressure/build/CMakeFiles/edit_cache.dir
-/home/pi/work/classes/tests/Pressure/build/CMakeFiles/PressureTests.dir
