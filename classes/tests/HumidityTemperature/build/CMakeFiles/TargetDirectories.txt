@@ -1,3 +1,0 @@
-/home/pi/work/classes/tests/HumidityTemperature/build/CMakeFiles/rebuild_cache.dir
-/home/pi/work/classes/tests/HumidityTemperature/build/CMakeFiles/edit_cache.dir
-/home/pi/work/classes/tests/HumidityTemperature/build/CMakeFiles/HumidityTemperatureTests.dir
