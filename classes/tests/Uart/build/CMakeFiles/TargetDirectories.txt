@@ -1,3 +1,0 @@
-/home/pi/work/classes/tests/Uart/build/CMakeFiles/rebuild_cache.dir
-/home/pi/work/classes/tests/Uart/build/CMakeFiles/edit_cache.dir
-/home/pi/work/classes/tests/Uart/build/CMakeFiles/UartTests.dir

@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/UartTests.dir/UartTests.cpp.o CMakeFiles/UartTests.dir/home/pi/work/classes/Uart.cpp.o  -o UartTests -rdynamic -lwiringPi 
