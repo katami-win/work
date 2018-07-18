@@ -410,7 +410,8 @@ int main(int argc, char* argv[])
         std::string fname(ent->d_name);
         if((fname.compare("w1_bus_master1") == 0)|| 
             (fname.compare(".") == 0) ||
-            (fname.compare("..") == 0) )
+            (fname.compare("..") == 0) ||
+            ((int)fname.rfind("28-") != 0))
           {
           }
         else
