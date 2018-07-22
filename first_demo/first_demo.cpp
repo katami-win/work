@@ -18,6 +18,7 @@
 #include <termios.h>
 #include <unistd.h>
 #include <signal.h>
+#include <stdio.h>  // popen, pclose
 
 int g_sig;
 
@@ -26,6 +27,29 @@ void handler(int sig)
     g_sig = 1;
 }
  
+int getI2cAddress(std::string str)
+{
+    std::stringstream ss;
+    ss <<"sudo i2cdetect -y 1 | grep " <<str<<": | sed -e \"s/"<<str<<": //g\" | sed -e \"s/-- //g\" | sed -e \"s/ //g\"";
+    FILE *fp;
+    fp = ::popen(ss.str().c_str(),"r");
+    //std::cout<<ss.str()<<std::endl;
+    if (fp == NULL) 
+      {
+        return 0;
+      }
+    char i2c_buf[64];
+    fgets(i2c_buf, sizeof(i2c_buf), fp);
+    int len = ::strlen(i2c_buf);
+    if(len<2)
+      {
+        return 0;
+      }
+    i2c_buf[2] = '\0';
+    pclose(fp);
+    int addr = std::stoi(i2c_buf, nullptr, 16);
+    return addr;
+}
 
 int main(int argc, char* argv[])
 {
@@ -33,27 +57,59 @@ int main(int argc, char* argv[])
     ::signal(SIGINT,handler);
     
     std::cout<<"* i2c"<<std::endl;
-    ::system("sudo i2cdetect -y 1");
-    std::cout<<"* 1-wire"<<std::endl;
-    ::system("ls /sys/bus/w1/devices/");
-    std::cout<<"* uart"<<std::endl;
-    ::system("ls /dev/ttyS0");
+    int acc_addr = getI2cAddress("10");
+    if(acc_addr == 0)
+      {
+        std::cout<<" Accelerometer i2c address error"<<std::endl;
+        return false;
+      }
+    std::cout<<" Accelerometer:"<<std::hex<<std::setw(2)<<std::setfill('0')<<acc_addr<<std::endl;
+    int ill_addr = getI2cAddress("30");
+    if(ill_addr == 0)
+      {
+        std::cout<<" illumination i2c address error"<<std::endl;
+        return false;
+      }
+    std::cout<<" illumination :"<<std::hex<<std::setw(2)<<std::setfill('0')<<ill_addr<<std::endl;
+    int hum_addr = getI2cAddress("40");
+    if(hum_addr == 0)
+      {
+        std::cout<<" Humidity i2c address error"<<std::endl;
+        return false;
+      }
+    std::cout<<" Humidity     :"<<std::hex<<std::setw(2)<<std::setfill('0')<<hum_addr<<std::endl;
+    int pre_addr = getI2cAddress("60");
+    if(pre_addr == 0)
+      {
+        std::cout<<" Pressure i2c address error"<<std::endl;
+        return false;
+      }
+    std::cout<<" Pressure     :"<<std::hex<<std::setw(2)<<std::setfill('0')<<pre_addr<<std::endl;
 
+
+    std::cout<<"* 1-wire"<<std::endl;
+    std::cout<<" "<<std::flush;
+    ::system("ls /sys/bus/w1/devices/ | grep \"28\"");
+    std::cout<<"* uart"<<std::endl;
+    std::cout<<" "<<std::flush;
+    ::system("ls /dev/ttyS0");
+    std::cout<<""<<std::endl;
     //
     //Accelerometer initialization
     // 
-    std::cout<<"Accelerometer initialization"<<std::endl;
+    std::cout<<"-Accelerometer initialization"<<std::endl;
     int accelerometer;
     accelerometer = ::open("/dev/i2c-1", O_RDWR);
     if(accelerometer < 0)
       {
-        std::cout<<"Faild to open i2c port"<<std::endl;
+        std::cout<<"  Faild to open i2c port"<<std::endl;
         ::close(accelerometer);
         return false;
       }
     if (ioctl(accelerometer, I2C_SLAVE, 0x1d) < 0)
       {
-        std::cout<<"Unable to get bus access to talk to slave"<<std::endl;
+        std::cout<<"  Unable to get bus access to talk to slave"<<std::endl;
+        std::cout<<"  I2C_SLAVE is 0x1d."<<std::endl;
         ::system("sudo i2cdetect -y 1");
         ::close(accelerometer);
         return false;
@@ -77,19 +133,20 @@ int main(int argc, char* argv[])
     //
     //Illumination initialization
     //
-    std::cout<<"Illumination initialization"<<std::endl;
+    std::cout<<"-iIllumination initialization"<<std::endl;
     int illumination;
     illumination = ::open("/dev/i2c-1", O_RDWR);
     if(illumination < 0)
       {
-        std::cout<<"Faild to open i2c port"<<std::endl;
+        std::cout<<"  Faild to open i2c port"<<std::endl;
         ::close(illumination);
         ::close(accelerometer);
         return false;
       }
     if (ioctl(illumination, I2C_SLAVE, 0x39) < 0)
       {
-        std::cout<<"Unable to get bus access to talk to slave"<<std::endl;
+        std::cout<<"  Unable to get bus access to talk to slave"<<std::endl;
+        std::cout<<"  I2C_SLAVE is 0x39."<<std::endl;
         ::system("sudo i2cdetect -y 1");
         ::close(illumination);
         ::close(accelerometer);
@@ -109,12 +166,12 @@ int main(int argc, char* argv[])
     //
     // HumidityTemperature initialization
     //
-    std::cout<<"HumidityTemperature initialization"<<std::endl;
+    std::cout<<"-HumidityTemperature initialization"<<std::endl;
     int humidityTemperature;
     humidityTemperature = ::open("/dev/i2c-1", O_RDWR);
     if(humidityTemperature < 0)
       {
-        std::cout<<"Faild to open i2c port"<<std::endl;
+        std::cout<<"  Faild to open i2c port"<<std::endl;
         ::close(illumination);
         ::close(accelerometer);
         ::close(humidityTemperature);
@@ -122,7 +179,8 @@ int main(int argc, char* argv[])
       }
     if (ioctl(humidityTemperature, I2C_SLAVE, 0x40) < 0)
       {
-        std::cout<<"Unable to get bus access to talk to slave"<<std::endl;
+        std::cout<<"  Unable to get bus access to talk to slave"<<std::endl;
+        std::cout<<"  I2C_SLAVE is 0x40."<<std::endl;
         ::system("sudo i2cdetect -y 1");
         ::close(illumination);
         ::close(accelerometer);
@@ -138,7 +196,7 @@ int main(int argc, char* argv[])
     hum_buf[0] = 0x02;
     hum_buf[1] = 0x10;
     hum_buf[2] = 0x00;
-    ::write(humidityTemperature, hum_buf, 3);
+    write(humidityTemperature, hum_buf, 3);
 
     //
     //Pressure initialization
@@ -151,7 +209,7 @@ int main(int argc, char* argv[])
     pressure = ::open("/dev/i2c-1", O_RDWR);
     if(pressure < 0)
       {
-        std::cout<<"Faild to open i2c port"<<std::endl;
+        std::cout<<"  Faild to open i2c port"<<std::endl;
         ::close(illumination);
         ::close(accelerometer);
         ::close(humidityTemperature);
@@ -160,7 +218,8 @@ int main(int argc, char* argv[])
       }
     if (ioctl(pressure, I2C_SLAVE, 0x60) < 0)
       {
-        std::cout<<"Unable to get bus access to talk to slave"<<std::endl;
+        std::cout<<"  Unable to get bus access to talk to slave"<<std::endl;
+        std::cout<<"  I2C_SLAVE is 0x60."<<std::endl;
         ::system("sudo i2cdetect -y 1");
         ::close(illumination);
         ::close(accelerometer);
@@ -393,7 +452,7 @@ int main(int argc, char* argv[])
     //
     //1-wire initialization
     //
-    std::cout<<"1wire initialization"<<std::endl;
+    std::cout<<"-1wire initialization"<<std::endl;
     std::string unique_code =""; 
     struct dirent* ent; 
     DIR* dir_ptr(::opendir("/sys/bus/w1/devices/"));
@@ -424,7 +483,7 @@ int main(int argc, char* argv[])
     ::closedir(dir_ptr);
     if(unique_code.length()==0)
       {
-        std::cout<<"not found devices"<<std::endl;
+        std::cout<<"  not found devices"<<std::endl;
         ::close(illumination);
         ::close(accelerometer);
         ::close(humidityTemperature);
@@ -440,7 +499,7 @@ int main(int argc, char* argv[])
     uart = ::open("/dev/ttyS0", O_RDWR | O_NOCTTY);
     if(uart < 0)
       {
-        std::cout<<"Faild to open UART"<<std::endl;
+        std::cout<<"  Faild to open UART"<<std::endl;
         ::close(illumination);
         ::close(accelerometer);
         ::close(humidityTemperature);
@@ -467,6 +526,7 @@ int main(int argc, char* argv[])
     ::tcflush(uart, TCIFLUSH);
     ::tcsetattr(uart, TCSANOW, &new_term_io);
   
+    std::cout<<""<<std::endl;
     std::cout<<"** Press Enter key to start the demonstration. **"<<std::endl;
     getchar();
     //
@@ -577,6 +637,14 @@ int main(int argc, char* argv[])
         //
         //Gets Illumination
         //
+        
+        //set gain
+        ill_buf[0] = 0x81;
+        ill_buf[1] = 0x12;
+        ::write(illumination, ill_buf, 2);
+        usleep(800000);
+
+        //get
         ill_buf[0] = 0xac;
         ::write(illumination, ill_buf, 1);
         ::read(illumination, ill_buf, 2);
@@ -589,7 +657,15 @@ int main(int argc, char* argv[])
     
         unsigned short ir = (((short)ill_buf[0x01]<<8)|((short)ill_buf[0x00]));
         double ratio;
-        ratio = ((double)ir/(double)full);
+        if(full==0)
+          {
+            ratio = 9999.0;
+          }
+        else
+          {
+            ratio = ((double)ir/(double)full);
+          }
+
         double lux;
         if((ratio>=0.0) && (ratio<=0.52))
           {
@@ -611,7 +687,7 @@ int main(int argc, char* argv[])
           {
             lux = 0;
           }
-        std::cout<< std::fixed<<std::setprecision(2)<< (double)lux << "lux "<<std::flush;
+        std::cout<< std::fixed<<std::setprecision(2)<< (double)lux << "lx "<<std::flush;
 
         //
         //Gets GPS
