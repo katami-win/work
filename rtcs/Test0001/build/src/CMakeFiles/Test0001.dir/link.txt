@@ -1,1 +1,0 @@
-/usr/bin/c++  -fPIC    -shared -Wl,-soname,Test0001.so -o Test0001.so CMakeFiles/Test0001.dir/Test0001.cpp.o -lpthread -lomniORB4 -lomnithread -lomniDynamic4 -lRTC -lcoil 

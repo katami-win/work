@@ -1,4 +1,0 @@
-/home/pi/work/src/rtcs/Test0001/build/src/CMakeFiles/ALL_IDL_TGT.dir
-/home/pi/work/src/rtcs/Test0001/build/src/CMakeFiles/Test0001.dir
-/home/pi/work/src/rtcs/Test0001/build/src/CMakeFiles/Test0001Comp.dir
-/home/pi/work/src/rtcs/Test0001/build/CMakeFiles/uninstall.dir

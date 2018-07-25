@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/Test0001Comp.dir/Test0001Comp.cpp.o CMakeFiles/Test0001Comp.dir/Test0001.cpp.o  -o Test0001Comp -rdynamic -lpthread -lomniORB4 -lomnithread -lomniDynamic4 -lRTC -lcoil 
