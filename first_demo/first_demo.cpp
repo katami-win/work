@@ -133,7 +133,7 @@ int main(int argc, char* argv[])
     //
     //Illumination initialization
     //
-    std::cout<<"-iIllumination initialization"<<std::endl;
+    std::cout<<"-Illumination initialization"<<std::endl;
     int illumination;
     illumination = ::open("/dev/i2c-1", O_RDWR);
     if(illumination < 0)
@@ -710,7 +710,7 @@ int main(int argc, char* argv[])
                     rp = 1;
                     step = 1;
                   }
-	        break;
+                break;
               case 1:
                 ubuf[rp] = cbuf;
                 rp++;
@@ -718,11 +718,11 @@ int main(int argc, char* argv[])
                   {
                     step = 2;
                   }
-	        break;
+                break;
               }
             if(step == 2)
               {
-	        break;
+                break;
               }
           }
 
@@ -739,24 +739,38 @@ int main(int argc, char* argv[])
         double lon = 0.0;
         if(vstr[0].compare("$GPGGA")==0)
           {
-            lat = std::stod(vstr[2]);
-            lon = std::stod(vstr[4]);
-            lat = lat /100.0;
-            lon = lon /100.0;
-            std::cout<<" "<<vstr[0]<<" "<<lat<<"N "<<lon<<"E "<<std::flush;
-            //std::cout<<" "<<vstr[2]<<"N "<<vstr[4]<<"E "<<std::flush;
+            if((vstr[2].length() != 0) && (vstr[4].length() !=0))
+              {
+                lat = std::stod(vstr[2]);
+                lon = std::stod(vstr[4]);
+                lat = lat /100.0;
+                lon = lon /100.0;
+                std::cout<<" "<<vstr[0]<<" "<<lat<<"N "<<lon<<"E "<<std::flush;
+                //std::cout<<" "<<vstr[2]<<"N "<<vstr[4]<<"E "<<std::flush;
+              } 
+            else
+              {
+                std::cout<<" "<<vstr[0]<<std::flush;
+              }
           }
         else if(vstr[0].compare("$GPRMC")==0)
           {
-            lat = std::stod(vstr[3]);
-            lon = std::stod(vstr[5]);
-            lat = lat /100.0;
-            lon = lon /100.0;
-            std::cout<<" "<<vstr[0]<<" "<<lat<<"N "<<lon<<"E "<<std::flush;
+            if((vstr[3].length() != 0) && (vstr[5].length() != 0))
+              {
+                lat = std::stod(vstr[3]);
+                lon = std::stod(vstr[5]);
+                lat = lat /100.0;
+                lon = lon /100.0;
+                std::cout<<" "<<vstr[0]<<" "<<lat<<"N "<<lon<<"E "<<std::flush;
+              }
+            else
+              {
+                  std::cout<<" "<<vstr[0]<<std::flush;
+              }
           }
         else
           {
-            std::cout<<" "<<std::flush;
+            std::cout<<" "<<vstr[0]<<" "<<std::flush;
           }
 
         
