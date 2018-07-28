@@ -77,6 +77,16 @@ int main(int argc, char* argv[])
         std::cout<<" Humidity i2c address error"<<std::endl;
         return false;
       }
+    if((hum_addr == 0x40) ||
+       (hum_addr == 0x44) ||
+       (hum_addr == 0x45)) 
+      {
+      }
+    else
+      {
+        std::cout<<" Humidity i2c address error"<<std::endl;
+        return false;
+      }
     std::cout<<" Humidity     :"<<std::hex<<std::setw(2)<<std::setfill('0')<<hum_addr<<std::endl;
     int pre_addr = getI2cAddress("60");
     if(pre_addr == 0)
@@ -177,10 +187,10 @@ int main(int argc, char* argv[])
         ::close(humidityTemperature);
         return false;
       }
-    if (ioctl(humidityTemperature, I2C_SLAVE, 0x40) < 0)
+    if (ioctl(humidityTemperature, I2C_SLAVE, hum_addr) < 0)
       {
         std::cout<<"  Unable to get bus access to talk to slave"<<std::endl;
-        std::cout<<"  I2C_SLAVE is 0x40."<<std::endl;
+        std::cout<<"  I2C_SLAVE is "<<std::hex<<hum_addr<<" ."<<std::endl;
         ::system("sudo i2cdetect -y 1");
         ::close(illumination);
         ::close(accelerometer);
@@ -191,12 +201,18 @@ int main(int argc, char* argv[])
 
 
     //config
-    char hum_buf[4];
+    char hum_buf[16];
 
-    hum_buf[0] = 0x02;
-    hum_buf[1] = 0x10;
-    hum_buf[2] = 0x00;
-    write(humidityTemperature, hum_buf, 3);
+    if(hum_addr == 0x40)
+      {
+        hum_buf[0] = 0x02;
+        hum_buf[1] = 0x10;
+        hum_buf[2] = 0x00;
+        write(humidityTemperature, hum_buf, 3);
+      }
+    else
+      {
+      }
 
     //
     //Pressure initialization
@@ -561,22 +577,45 @@ int main(int argc, char* argv[])
         //
         // Get Humidity
         //
-        hum_buf[0] = 0x00;
-        ::write(humidityTemperature, hum_buf, 1);
-        ::usleep(20000);
+        if(hum_addr == 0x40)
+          {
+            hum_buf[0] = 0x00;
+            ::write(humidityTemperature, hum_buf, 1);
+            ::usleep(20000);
 
-        size_t len = ::read(humidityTemperature, hum_buf, 4);
+            size_t len = ::read(humidityTemperature, hum_buf, 4);
 
-        short temperature_val = (((short)hum_buf[0x00]<<8)|((short)hum_buf[0x01]));
-        unsigned short humidity_val = (((short)hum_buf[0x02]<<8)|((short)hum_buf[0x03]));
+            short temperature_val = (((short)hum_buf[0x00]<<8)|((short)hum_buf[0x01]));
+            unsigned short humidity_val = (((short)hum_buf[0x02]<<8)|((short)hum_buf[0x03]));
 
-        std::stringstream hum_ss;
-        double temperature = ((double)temperature_val*165.0/65536.0)-40.0;
-        double humidity = ((double)humidity_val*100.0/65536.0);
-        hum_ss <<std::fixed<<std::setprecision(2)<< humidity << "% " ;
+            std::stringstream hum_ss;
+            double temperature = ((double)temperature_val*165.0/65536.0)-40.0;
+            double humidity = ((double)humidity_val*100.0/65536.0);
+            hum_ss <<std::fixed<<std::setprecision(2)<< humidity << "% " ;
 
-        std::cout << hum_ss.str() << std::flush;
+            std::cout << hum_ss.str() << std::flush;
+          }
+        else
+          {
+            hum_buf[0] = 0x2C;
+            hum_buf[1] = 0x06;
+            ::write(humidityTemperature, hum_buf, 2);
+            ::usleep(20000);
 
+            size_t len = ::read(humidityTemperature, hum_buf, 6);
+
+            short temperature_val = (((short)hum_buf[0x00]<<8)|((short)hum_buf[0x01]));
+            unsigned short humidity_val = (((short)hum_buf[0x03]<<8)|((short)hum_buf[0x04]));
+
+
+            std::stringstream hum_ss;
+            double temperature = ((double)temperature_val*175.0/65536.0)-45.0;
+            double humidity = ((double)humidity_val*100.0/65536.0);
+
+            hum_ss <<std::fixed<<std::setprecision(2)<< humidity << "% " ;
+
+            std::cout << hum_ss.str() << std::flush;
+          }
         //
         //Gets Barometer
         //
