@@ -119,14 +119,17 @@ RTC::ReturnCode_t GPSRTC::onExecute(RTC::UniqueId ec_id)
   stringBuffer.str("");
 
   std::string str("");
+std::cout<<"00100"<<std::endl;
   str = m_gps.readGPGGA();
 std::cout<<str<<std::endl;
   if (str.empty())
     {
       return RTC::RTC_OK;
     }
+std::cout<<"00110"<<std::endl;
   std::string::size_type pos(0); 
   pos = str.find("\r\n", 0);
+std::cout<<"00120"<<std::endl;
   if(pos != std::string::npos)
     {
 std::cout<<pos<<std::endl;
@@ -136,8 +139,11 @@ std::cout<<pos<<std::endl;
     << WEIApp::getDatetimeString()<<":"
     << str;
     //<< str <<std::endl;
+std::cout<<"00130"<<std::endl;
   m_GPGGA.data = CORBA::string_dup(stringBuffer.str().c_str());
+std::cout<<"00140"<<std::endl;
   m_GPGGAOut.write();
+std::cout<<"00150"<<std::endl;
   return RTC::RTC_OK;
 }
 
