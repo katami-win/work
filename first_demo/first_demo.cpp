@@ -538,7 +538,8 @@ int main(int argc, char* argv[])
     new_term_io.c_oflag = 0;
     new_term_io.c_lflag = 0;
     new_term_io.c_cc[VTIME] = 0;
-    new_term_io.c_cc[VMIN] = 1;
+    //new_term_io.c_cc[VMIN] = 1;
+    new_term_io.c_cc[VMIN] = 0;
     ::tcflush(uart, TCIFLUSH);
     ::tcsetattr(uart, TCSANOW, &new_term_io);
   
@@ -739,7 +740,15 @@ int main(int argc, char* argv[])
         int step = 0;
         for(;;)
           {
-            read(uart, (char *)&cbuf, 1);
+            size_t len = read(uart, (char *)&cbuf, 1);
+            if(len == 0)
+              {
+                ubuf[0] = 'N';
+                ubuf[1] = 'C';
+                ubuf[2] = '\0';
+                rp = 2;
+                break;
+              }
             switch(step)
               {
               case 0:
