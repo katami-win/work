@@ -71,7 +71,8 @@ namespace WEIApp
     new_term_io.c_oflag = 0;
     new_term_io.c_lflag = 0;
     new_term_io.c_cc[VTIME] = 0;
-    new_term_io.c_cc[VMIN] = 1;
+    //new_term_io.c_cc[VMIN] = 1;
+    new_term_io.c_cc[VMIN] = 0;
     ::tcflush(m_uart, TCIFLUSH);
     ::tcsetattr(m_uart, TCSANOW, &new_term_io);
 
@@ -104,7 +105,16 @@ namespace WEIApp
     for(;;)
       {
         //res = read(m_uart, (char *)&cbuf, 1);
-        read(m_uart, (char *)&cbuf, 1);
+        //read(m_uart, (char *)&cbuf, 1);
+        size_t len = read(m_uart, (char *)&cbuf, 1);
+        if(len == 0)
+          {
+            ubuf[0] = 'N';
+            ubuf[1] = 'C';
+            ubuf[2] = '\0';
+            rp = 2;
+            break;
+          }
         switch(step)
           {
           case 0:
@@ -119,6 +129,12 @@ namespace WEIApp
             ubuf[rp] = cbuf;
             rp++;
             if(cbuf == '\n')
+              {
+                step = 2;
+                rp--;
+                rp--;
+              }
+            if(rp == 255) 
               {
                 step = 2;
               }
@@ -143,29 +159,56 @@ namespace WEIApp
     double lon = 0.0;
     if(vstr[0].compare("$GPGGA")==0)
       {
-        lat = std::stod(vstr[2]);
-        lon = std::stod(vstr[4]);
-        lat = lat /100.0;
-        lon = lon /100.0;
-        //std::cout<<" "<<vstr[0]<<" "<<lat<<"N "<<lon<<"E "<<std::flush;
-        //ss<<vstr[0]<<","<<lat<<"N,"<<lon<<"E "<<std::flush;
-        ss<<lat<<"N,"<<lon<<"E "<<std::flush;
-        //std::cout<<" "<<vstr[2]<<"N "<<vstr[4]<<"E "<<std::flush;
+        if(vstr.size()>4)
+          {
+            if((vstr[2].length() != 0) && (vstr[4].length() !=0))
+              {
+                lat = std::stod(vstr[2]);
+                lon = std::stod(vstr[4]);
+                lat = lat /100.0;
+                lon = lon /100.0;
+                ss<<vstr[0]<<" "<<lat<<"N,"<<lon<<"E "<<std::flush;
+              }
+            else
+              {
+                ss<<vstr[0]<<std::flush;
+              }
+          }
+        else
+          { 
+            ss<<vstr[0]<<std::flush;
+            std::cout<<vstr[0]<<"//"<<std::endl;
+          }
       }
     else if(vstr[0].compare("$GPRMC")==0)
       {
-        lat = std::stod(vstr[3]);
-        lon = std::stod(vstr[5]);
-        lat = lat /100.0;
-        lon = lon /100.0;
-        //std::cout<<" "<<vstr[0]<<" "<<lat<<"N "<<lon<<"E "<<std::flush;
-        //ss<<vstr[0]<<","<<lat<<"N,"<<lon<<"E "<<std::flush;
-        ss<<lat<<"N,"<<lon<<"E"<<std::flush;
+        if(vstr.size()>5)
+          {
+            if((vstr[3].length() != 0) && (vstr[5].length() != 0))
+              {
+                lat = std::stod(vstr[3]);
+                lon = std::stod(vstr[5]);
+                lat = lat /100.0;
+                lon = lon /100.0;
+                ss<<vstr[0]<<" "<<lat<<"N,"<<lon<<"E"<<std::flush;
+              }
+            else
+              {
+                //ss<<lat<<"N,"<<lon<<"E"<<std::flush;
+                ss<<vstr[0]<<std::flush;
+              }
+          }
+        else
+          { 
+            ss<<vstr[0]<<std::flush;
+            std::cout<<vstr[0]<<"//"<<std::endl;
+          }
       }
     else
       {
+        ss<<vstr[0]<<std::flush;
         //std::cout<<" "<<std::flush;
-        return "";
+        //return "";
       }
     //std::cout<<ss.str()<<std::endl;
     ret = ss.str();
