@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/AccelerometerTests.dir/AccelerometerTests.cpp.o CMakeFiles/AccelerometerTests.dir/home/pi/work/classes/Accelerometer.cpp.o CMakeFiles/AccelerometerTests.dir/home/pi/work/classes/Task.cpp.o CMakeFiles/AccelerometerTests.dir/home/pi/work/classes/Split.cpp.o  -o AccelerometerTests -rdynamic -lpthread 
