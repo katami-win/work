@@ -72,6 +72,7 @@ RTC::ReturnCode_t IlluminationRTC::onInitialize()
   // </rtc-template>
 
   m_illumination.initIllumination();
+  m_illumination.setGain(0);
   return RTC::RTC_OK;
 }
 
@@ -116,7 +117,7 @@ RTC::ReturnCode_t IlluminationRTC::onExecute(RTC::UniqueId ec_id)
   ::uname(&systeminfo);
   std::stringstream stringBuffer;
   stringBuffer.str("");
-  m_illumination.setGain(0);
+  //m_illumination.setGain(0);
   stringBuffer<<systeminfo.nodename<<":"<<"Illumination"<<":"
     << WEIApp::getDatetimeString()<<":"
     << m_illumination.getValue();
