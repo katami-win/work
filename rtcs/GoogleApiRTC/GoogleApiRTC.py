@@ -146,25 +146,10 @@ class GoogleApiRTC(OpenRTM_aist.DataFlowComponentBase):
         
         # Set CORBA Service Ports
 
-        doc_id =  '12m8fQQBRNKPEzKOjilJldZKlam7jf5BlCp7ZazNkVvU'
-        #doc_id =  '1zfIg5z7F5sbm5BZdUFzeOj9r8TzJjjdOpIc6bAPUyiU'
-        #doc_id =  '1gX4qhtt2R9PtdDMO7Pz-M_q9cZsHjn1EWfe49IPG64A'
-        #doc_id =  '1NS4xM_mrjiJWngWJFau-IGMEcpP_fhxToyVhlohCjBA'
+        doc_id =  '1uCOpwYXa1wnCQMWP7tib3Fv5Tf3jQFGT9zEPHVFe60s'
 
-        #json_key    = json.load(open('./iotsemi1612-695af2de0f12.json'))
-        #json_key    = json.load(open('./iotseminar-ef7d285054b5.json'))
-        #json_key    = json.load(open('My Project 1-ee3a4064b9e6.json'))
-        json_path = 'iot-summer-c1652295662e.json'
+        json_path = '_iot-seminar-project-1181b17ee94f.json'
         scope       = ['https://spreadsheets.google.com/feeds']
-        #print json_key['client_email']
-        #credentials = SignedJwtAssertionCredentials(
-        #    json_key['client_email'], 
-        #    json_key['private_key'].encode(), 
-        #    scope)
-        #credentials = ServiceAccountCredentials.from_p12_keyfile(
-        #    service_account_email=json_key['client_email'], 
-        #    filename=json_key['private_key'].encode(), 
-        #    scopes=scope)
         credentials =  ServiceAccountCredentials.from_json_keyfile_name(
                        json_path,scope)
         gclient = gspread.authorize(credentials)
@@ -344,8 +329,13 @@ class GoogleApiRTC(OpenRTM_aist.DataFlowComponentBase):
                     data.append(self._uploadData[key])
                 else:
                     data.append('None')
+            #try :
             print(data)
             self._wsheet.append_row(data)
+            #except :
+                #print("pass")
+                #pass
+
             flag = 0;
         return RTC.RTC_OK
     
