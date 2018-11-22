@@ -16,7 +16,7 @@
 
 
 
-namespace App
+namespace WEIApp
 {
   /*!
    * @class Pressure
@@ -64,6 +64,7 @@ namespace App
 
   protected:
   private:
+    int getI2cAddress(std::string str);
 
     std::string m_i2cFilename; 
     int m_pressureAddress;
@@ -73,6 +74,20 @@ namespace App
     double m_b1;
     double m_b2;
     double m_c12;
+
+
+    unsigned short dig_T1;
+    short dig_T2;
+    short dig_T3;
+    unsigned short dig_P1;
+    short dig_P2;
+    short dig_P3;
+    short dig_P4;
+    short dig_P5;
+    short dig_P6;
+    short dig_P7;
+    short dig_P8;
+    short dig_P9;
 
 
   }; 

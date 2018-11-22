@@ -66,6 +66,8 @@ namespace WEIApp
      */
     //virtual long getValue();
 
+  private:
+    int getI2cAddress(std::string str);
 
 
   protected:

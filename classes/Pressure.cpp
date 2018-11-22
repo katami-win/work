@@ -21,7 +21,7 @@
 #include <unistd.h>
 
 
-#include <Pressure.h>
+#include "Pressure.h"
 
 
 namespace WEIApp
@@ -46,6 +46,19 @@ namespace WEIApp
     m_b1 = 0.0;
     m_b2 = 0.0;
     m_c12 = 0.0;
+
+    dig_T1 = 0;
+    dig_T2 = 0;
+    dig_T3 = 0;
+    dig_P1 = 0;
+    dig_P2 = 0;
+    dig_P3 = 0;
+    dig_P4 = 0;
+    dig_P5 = 0;
+    dig_P6 = 0;
+    dig_P7 = 0;
+    dig_P8 = 0;
+    dig_P9 = 0;
   }
   /*!
    * @brief Destructor
@@ -305,7 +318,6 @@ namespace WEIApp
 
         }
 
-        return true;
 
       }
     else
@@ -385,6 +397,7 @@ namespace WEIApp
         ::write(m_pressure, buf, 1);
         ::read(m_pressure, buf, 2);
         dig_P9 = (((short)buf[1]<<8)|((short)buf[0]));
+
         /*
         std::cout << "P1 " <<  dig_P1 << std::endl;
         std::cout << "P2 " <<  dig_P2 << std::endl;
@@ -397,6 +410,7 @@ namespace WEIApp
         std::cout << "P9 " <<  dig_P9 << std::endl;
         */
       }
+    return true;
   }
   /*!
    * @brief Shutdown Pressure
