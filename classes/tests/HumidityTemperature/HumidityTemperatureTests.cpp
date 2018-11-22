@@ -72,8 +72,8 @@ namespace HumidityTemperature
     void test_getValue()
     {
       std::cout<<"getValue Test"<<std::endl;
-      WEIApp::HumidityTemperature accelerometer;
-      accelerometer.initHumidityTemperature();
+      WEIApp::HumidityTemperature humid;
+      humid.initHumidityTemperature();
       
       m_keys = false;
       activate(); 
@@ -81,7 +81,7 @@ namespace HumidityTemperature
       std::cout<<"Unit Celsius %"<<std::endl;
       while(!m_keys)
         {  
-          std::string str = accelerometer.getValue();
+          std::string str = humid.getValue();
           std::cout<< str  <<std::endl;
           ::sleep(1);
         }  

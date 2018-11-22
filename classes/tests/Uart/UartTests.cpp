@@ -64,14 +64,9 @@ namespace Uart
         {
           while(1)
             {
-              for(int ic=0;ic<7;++ic)
-                {
-                  std::string str = uart.readGPGGA();
-                  if (str.size() != 0) 
-                    {
-                      std::cout<<str<<std::endl;
-                    }
-                }
+              std::string str = uart.readGPGGA();
+              std::cout<<str<<std::endl;
+              ::usleep(1000000);
             }
         }
       uart.shutdownUart();
