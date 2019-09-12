@@ -134,6 +134,12 @@ namespace WEIApp
                 rp--;
                 rp--;
               }
+            if(cbuf == '$')
+              {
+                ubuf[0] = cbuf;
+                rp = 1;
+                step = 1;
+              }
             if(rp == 255) 
               {
                 step = 2;
@@ -163,11 +169,20 @@ namespace WEIApp
           {
             if((vstr[2].length() != 0) && (vstr[4].length() !=0))
               {
-                lat = std::stod(vstr[2]);
-                lon = std::stod(vstr[4]);
-                lat = lat /100.0;
-                lon = lon /100.0;
-                ss<<vstr[0]<<" "<<lat<<"N,"<<lon<<"E "<<std::flush;
+                try
+                  {
+                    lat = std::stod(vstr[2]);
+                    lon = std::stod(vstr[4]);
+                    lat = lat /100.0;
+                    lon = lon /100.0;
+                    ss<<vstr[0]<<" "<<lat<<"N,"<<lon<<"E "<<std::flush;
+                  }
+                catch(...)
+                  {
+                    std::cout<<"db:"<<u_ss.str()<<std::endl;
+                    ss<<vstr[0]<<std::flush;
+                    std::cout<<"  :"<<ss.str()<<std::endl;
+                  }
               }
             else
               {
@@ -186,11 +201,20 @@ namespace WEIApp
           {
             if((vstr[3].length() != 0) && (vstr[5].length() != 0))
               {
-                lat = std::stod(vstr[3]);
-                lon = std::stod(vstr[5]);
-                lat = lat /100.0;
-                lon = lon /100.0;
-                ss<<vstr[0]<<" "<<lat<<"N,"<<lon<<"E"<<std::flush;
+                try
+                  {
+                    lat = std::stod(vstr[3]);
+                    lon = std::stod(vstr[5]);
+                    lat = lat /100.0;
+                    lon = lon /100.0;
+                    ss<<vstr[0]<<" "<<lat<<"N,"<<lon<<"E"<<std::flush;
+                  }
+                catch(...)
+                  {
+                    std::cout<<"db:"<<u_ss.str()<<std::endl;
+                    ss<<vstr[0]<<std::flush;
+                    std::cout<<"  :"<<ss.str()<<std::endl;
+                  }
               }
             else
               {
