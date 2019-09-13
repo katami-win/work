@@ -169,6 +169,10 @@ namespace WEIApp
                 sumbuf[bp] = cbuf;
                 sumbuf[bp+1] = '\0';
                 bp++;
+                if(bp == 7) 
+                  {
+                    step = 3;
+                  }
               }
             break;
           }
