@@ -97,11 +97,14 @@ namespace WEIApp
     std::string ret;
     char cbuf;
     char ubuf[256];
+    char sumbuf[8];
     //char buf[256];
     //buf[0] = '\0';
     //int res;
     int rp = 0;
+    int bp = 0;
     int step = 0;
+    char sum = 0;
     for(;;)
       {
         //res = read(m_uart, (char *)&cbuf, 1);
@@ -134,28 +137,65 @@ namespace WEIApp
                 rp--;
                 rp--;
               }
-            if(cbuf == '$')
+            else if(cbuf == '\r')
               {
-                ubuf[0] = cbuf;
-                rp = 1;
-                step = 1;
+                ;
+              }
+            else if(cbuf == '*')
+              {
+                step = 2;
+                ;
+              }
+            else
+              {
+                sum = sum ^ cbuf;
               }
             if(rp == 255) 
               {
                 step = 2;
               }
             break;
+          case 2:
+            if(cbuf == '\n')
+              {
+                step = 3;
+              }
+            else if(cbuf == '\r')
+              {
+                ;
+              }
+            else
+              {
+                sumbuf[bp] = cbuf;
+                sumbuf[bp+1] = '\0';
+                bp++;
+              }
+            break;
           }
-        if(step == 2)
+        if(step == 3)
           {
             break;
           }
       }
     ubuf[rp] = '\0';
     ret = std::string(ubuf);
+    std::string sumstring = std::string(sumbuf);
     std::vector<std::string> vstr;
     std::stringstream u_ss(ret);
+    std::stringstream sum_ss(sumstring);
     std::string buffer;
+    std::ostringstream o_ss;
+    o_ss <<std::hex<<std::setw(2)<<std::setfill('0')<<std::uppercase<<(int)sum;
+    if(sum_ss.str().compare(o_ss.str()) == 0)
+      {
+        //std::cout<<"sum OK:"<<o_ss.str()<<std::endl;
+      }
+    else
+      {
+        std::cout<<"sum error:" <<sum_ss.str()<<"  "<<o_ss.str()<<std::endl;
+        std::cout<<ret<<std::endl;
+        return "NC";
+      }
     while( std::getline(u_ss, buffer, ',') ) 
       {
         vstr.push_back(buffer);
