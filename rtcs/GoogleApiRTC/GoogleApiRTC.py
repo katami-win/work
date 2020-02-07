@@ -146,14 +146,14 @@ class GoogleApiRTC(OpenRTM_aist.DataFlowComponentBase):
         
         # Set CORBA Service Ports
 
-        doc_id =  '1uCOpwYXa1wnCQMWP7tib3Fv5Tf3jQFGT9zEPHVFe60s'
+        self.doc_id =  '1uCOpwYXa1wnCQMWP7tib3Fv5Tf3jQFGT9zEPHVFe60s'
 
-        json_path = '_iot-seminar-project-1181b17ee94f.json'
+        self.json_path = '_iot-seminar-project-1181b17ee94f.json'
         scope       = ['https://spreadsheets.google.com/feeds']
         credentials =  ServiceAccountCredentials.from_json_keyfile_name(
-                       json_path,scope)
+                       self.json_path,scope)
         gclient = gspread.authorize(credentials)
-        gfile   = gclient.open_by_key(doc_id)
+        gfile   = gclient.open_by_key(self.doc_id)
         #self._wsheet  = gfile.worksheet(os.uname()[1])
         self._wsheet  = gfile.get_worksheet(0)
 
@@ -210,9 +210,8 @@ class GoogleApiRTC(OpenRTM_aist.DataFlowComponentBase):
     #    # @return RTC::ReturnCode_t
     #    #
     #    #
-    #def onActivated(self, ec_id):
-    #
-    #    return RTC.RTC_OK
+    def onActivated(self, ec_id):
+        return RTC.RTC_OK
     
     #    ##
     #    #
@@ -329,12 +328,20 @@ class GoogleApiRTC(OpenRTM_aist.DataFlowComponentBase):
                     data.append(self._uploadData[key])
                 else:
                     data.append('None')
-            #try :
-            print(data)
-            self._wsheet.append_row(data)
-            #except :
-                #print("pass")
-                #pass
+            try :
+                print(data)
+                self._wsheet.append_row(data)
+            except :
+                print("Refresh the access token")
+                #doc_id =  '1uCOpwYXa1wnCQMWP7tib3Fv5Tf3jQFGT9zEPHVFe60s'
+                #json_path = '_iot-seminar-project-1181b17ee94f.json'
+                scope       = ['https://spreadsheets.google.com/feeds']
+                credentials =  ServiceAccountCredentials.from_json_keyfile_name(
+                               self.json_path,scope)
+                gclient = gspread.authorize(credentials)
+                gfile   = gclient.open_by_key(self.doc_id)
+                self._wsheet  = gfile.get_worksheet(0)
+                self._wsheet.append_row(data)
 
             flag = 0;
         return RTC.RTC_OK
